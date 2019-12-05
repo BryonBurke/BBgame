@@ -18,7 +18,7 @@ export class Game {
       clearInterval(interval);
       this.addPoints();
       this.resetStarterScore();
-      this.pasteCountDown();
+      // this.pasteCountDown();
     }
   }
   // Paste Command   Question 2 ----------

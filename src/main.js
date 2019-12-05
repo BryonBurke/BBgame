@@ -14,14 +14,49 @@ editor.setTheme("ace/theme/monokai");
 editor.session.setMode("ace/mode/javascript");
 
 function switchQuestions(game){
-  //hide previous questions
-  //show new
-  //should switch questions if answer is correct or time runs out on this.starterScore;
-  for(i = 1; i <= 10; i++){
-    $(`#${i}`).show();
-  }
-}
+  let goal;
 
+  let goalPicker = 1;
+
+  // (Math.floor(Math.random() * Math.floor(12))) + 1;
+
+  if (goalPicker === 1) {
+    goal = "Copy";
+    game.copyCountDown();
+  }else if (goalPicker === 2) {
+    goal = "Paste";
+    game.pasteCountDown();
+  }else if (goalPicker === 3) {
+    goal = "Select all"
+    game.selectAllCountDown();
+  }else if (goalPicker === 4) {
+    goal = "Toggle Comments";
+    game.toggleCommentsCountDown();
+  }else if (goalPicker === 5) {
+    goal = "Cut"
+
+
+  }else if (goalPicker === 6) {
+    goal = "Delete Line";
+  }else if (goalPicker === 7) {
+    goal = "Go to beginning of line"
+  }else if (goalPicker === 8) {
+    goal = "Go to beginning of line";
+  }else if (goalPicker === 9) {
+    goal = "Cut to the end of line"
+  }else if (goalPicker === 10) {
+    goal = "Select next match";
+  }else if (goalPicker === 11) {
+    goal = "Save";
+  }else if (goalPicker === 12) {
+    goal = "Select all";
+  }
+
+
+$("#goalPlace").text(goal);
+$("#displayGoal").show();
+
+}
 
 function countDownTimer(game){
   let displayCounter = setInterval(() => {
@@ -37,7 +72,8 @@ $(document).ready(function(){
   let collectionArray = game.collectionArray;
   $('#game').show();
   countDownTimer(game);
-  game.copyCountDown();
+  switchQuestions(game);
+  // game.copyCountDown();
   // Collect on key press array.
   $(document).keydown(function (event) {
     event.preventDefault();
